@@ -1,3 +1,5 @@
+package Model;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -35,7 +37,7 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" +
+        return "Model.Animal{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate.toString() +

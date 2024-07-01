@@ -1,3 +1,5 @@
+package Model;
+
 public enum AnimalTitle {
     DOG,
     CAT,
