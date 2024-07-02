@@ -3,9 +3,9 @@ package Model;
 import java.time.LocalDate;
 import java.time.Period;
 
+
 public abstract class Animal {
-    private static int counter;
-    private final int id = counter++;
+
     private String name;
     private LocalDate birthDate;
 
@@ -16,7 +16,8 @@ public abstract class Animal {
     }
 
     public int getId() {
-        return id;
+        Counter id = new Counter();
+        return id.getValue();
     }
 
     public String getName() {
@@ -38,7 +39,7 @@ public abstract class Animal {
     @Override
     public String toString() {
         return "Model.Animal{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate.toString() +
                 '}';
@@ -47,4 +48,6 @@ public abstract class Animal {
     public int age (LocalDate birthDate) {
         return (Period.between(birthDate, LocalDate.now())).getMonths();
     }
+
+
 }
