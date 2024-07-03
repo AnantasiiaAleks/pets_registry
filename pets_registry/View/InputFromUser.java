@@ -13,6 +13,12 @@ public interface InputFromUser {
         return sc.nextLine();
     }
 
+    static int inputInt(String message) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(message);
+        return sc.nextInt();
+    }
+
     static LocalDate inputDate(String message) {
         Scanner sc = new Scanner(System.in);
         System.out.println(message);
