@@ -1,4 +1,4 @@
-package Controller;
+package Utilities;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -9,7 +9,7 @@ import java.nio.file.Files;
 
 public class WriterToFile {
 
-    public void writeToFile(String text, String filePath) {
+    public static void writeToFile(String text, String filePath) {
         Path path = Paths.get(filePath);
         try {
             Files.createDirectories(path.getParent());
