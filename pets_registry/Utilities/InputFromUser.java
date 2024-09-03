@@ -1,4 +1,4 @@
-package View;
+package Utilities;
 
 import java.time.LocalDate;
 import java.util.Scanner;
