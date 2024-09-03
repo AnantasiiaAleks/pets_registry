@@ -59,8 +59,8 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return String.format("d%. %s, %s. name: s%, birthday: s%", getAnimalId(),
-                AnimalType.getAnimType(), AnimalTitle.getTitle(), getName(),
+        return String.format("d%. %s, %s. имя: s%, дата рождения: s%", getAnimalId(),
+                getAnimalType(), getAnimalTitle(), getName(),
                 getBirthDateString());
     }
 
@@ -72,6 +72,14 @@ public abstract class Animal {
         return true;
     }
 
-
+    public AnimalType typeByTitle (String title){
+        if (title.equals("кошка") || title.equals("собака") || title.equals("хомяк")) {
+            return AnimalType.HOMEANIMAL;
+        }
+        if (title.equals("лошадь") || title.equals("верблюд") || title.equals("осел")) {
+            return AnimalType.PACKANIMAL;
+        }
+        throw new IllegalArgumentException("Не найдено");
+    }
 
 }

@@ -1,16 +1,17 @@
 package Model;
 
 public enum AnimalType {
-    HOMEANIMAL("Home animal"),
-    PACKANIMAL("Pack animal");
+    HOMEANIMAL("Домашние животные"),
+    PACKANIMAL("Вьючные животные");
 
-    private final String animType;
+    private final String type;
 
     AnimalType (String animType) {
-        this.animType = animType;
+        this.type = animType;
     }
-    public String getAnimType() {
-        return animType;
+
+    public String getType() {
+        return type;
     }
 
 }
