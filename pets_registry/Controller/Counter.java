@@ -1,6 +1,6 @@
-package Model;
+package Controller;
 
-public class Counter {
+public class Counter implements AutoCloseable{
 
     private int value = 0;
 
@@ -21,5 +21,10 @@ public class Counter {
 
     public void deleteAll() {
         this.value = 0;
+    }
+
+    @Override
+    public void close() throws Exception {
+        System.out.println("Посчитано");
     }
 }
