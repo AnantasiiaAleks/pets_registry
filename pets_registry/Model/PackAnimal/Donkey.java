@@ -16,7 +16,7 @@ public class Donkey extends PackAnimal{
     public String toString() {
         return "Animal: " +
                 currentType + ", " + currentTitle +
-                ", id=" + getId() +
+                ", id=" + getAnimalId() +
                 ", name='" + getName() + '\'' +
                 ", birthDate=" + getBirthDate().toString() +
                 '.';
