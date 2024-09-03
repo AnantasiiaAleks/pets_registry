@@ -1,4 +1,4 @@
-package Controller.DataBase;
+package Model.DataBase;
 
 import Model.Animal;
 
