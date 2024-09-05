@@ -12,5 +12,5 @@ public interface DataBase {
 
     Animal searchAnimalById(int animalId);
 
-    boolean deleteAnimal(int animalId);
+    boolean deleteAnimalFromDB(int animalId);
 }
