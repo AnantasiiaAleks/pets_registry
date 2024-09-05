@@ -3,20 +3,33 @@ package Controller;
 import Model.Animal;
 import Model.AnimalTitle;
 import Model.AnimalType;
+import Model.DataBase.DataBase;
 import Model.HomeAnimals.Cat;
 import Model.HomeAnimals.Dog;
 import Model.HomeAnimals.Hamster;
 import Model.PackAnimal.Camel;
 import Model.PackAnimal.Donkey;
 import Model.PackAnimal.Horse;
+import Utilities.WriterToFile;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class AnimalController {
 
-    public Animal animalCreator(AnimalType animalType, AnimalTitle animalTitle,
-                                String name, LocalDate birthDate) {
-        return switch (animalTitle) {
+    private DataBase animalsDataBase;
+
+    public AnimalController(DataBase animalsDataBase) {
+        this.animalsDataBase = animalsDataBase;
+    }
+
+    public List<Animal> getAllAnimals() {
+        return animalsDataBase.showAllAnimals();
+    }
+
+    public boolean createNewAnimal(AnimalType animalType, AnimalTitle animalTitle,
+                                   String name, LocalDate birthDate) {
+        Animal newAnimal = switch (animalTitle) {
             case DOG -> new Dog(name, birthDate);
             case CAT -> new Cat(name, birthDate);
             case HAMSTER -> new Hamster(name, birthDate);
@@ -24,5 +37,17 @@ public class AnimalController {
             case CAMEL -> new Camel(name, birthDate);
             case DONKEY -> new Donkey(name, birthDate);
         };
+        return animalsDataBase.addAnimal(newAnimal);
     }
+
+    public boolean deleteAnimal(Animal animal) {
+        return animalsDataBase.deleteAnimalFromDB(animal.getAnimalId());
+    }
+
+    public static void writeAnimalIntoDb(Animal animal) {
+        WriterToFile.writeToFile(animal.toString(), "data/animalsDB.txt");
+    }
+
+
+
 }
