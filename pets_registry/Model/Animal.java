@@ -1,11 +1,13 @@
 package Model;
 
-import Controller.Counter;
+import Utilities.DataValidator;
+import Utilities.InputFromUser;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -17,6 +19,13 @@ public abstract class Animal {
     protected String name;
     protected LocalDate birthDate;
     protected List<Ability> animalAbilities;
+
+    public Animal(AnimalType type, AnimalTitle title, String name, LocalDate birthday) {
+        this.animalType = type;
+        this.animalTitle = title;
+        this.name = name;
+        this.birthDate = birthday;
+    }
 
     public Animal(String name, LocalDate birthDate) {
         this.name = name;
@@ -59,7 +68,7 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return String.format("d%. %s, %s. имя: s%, дата рождения: s%", getAnimalId(),
+        return String.format("d%.\t%s,\t%s.\tимя: s%,\tдата рождения: s%", getAnimalId(),
                 getAnimalType(), getAnimalTitle(), getName(),
                 getBirthDateString());
     }
@@ -70,16 +79,6 @@ public abstract class Animal {
         }
         animalAbilities.add(ability);
         return true;
-    }
-
-    public AnimalType typeByTitle (String title){
-        if (title.equals("кошка") || title.equals("собака") || title.equals("хомяк")) {
-            return AnimalType.HOMEANIMAL;
-        }
-        if (title.equals("лошадь") || title.equals("верблюд") || title.equals("осел")) {
-            return AnimalType.PACKANIMAL;
-        }
-        throw new IllegalArgumentException("Не найдено");
     }
 
 }

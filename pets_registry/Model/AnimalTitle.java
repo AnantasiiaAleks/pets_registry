@@ -18,4 +18,14 @@ public enum AnimalTitle {
         return title;
     }
 
+    public static boolean contains(String str) {
+        for (AnimalTitle title : AnimalTitle.values()) {
+            if (title.name().equalsIgnoreCase(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
