@@ -68,9 +68,9 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return String.format("%d.\t%s,\t%s.\tимя: %s,\tдата рождения: %s", getAnimalId(),
+        return String.format("%d.\t%s,\t%s.\tимя: %s,\tдата рождения: %s, умения: %s", getAnimalId(),
                 getAnimalType(), getAnimalTitle(), getName(),
-                getBirthDateString());
+                getBirthDateString(), getAnimalAbilities().toString());
     }
 
     public boolean learnAbility (Ability ability) {

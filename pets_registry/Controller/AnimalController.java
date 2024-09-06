@@ -10,7 +10,6 @@ import Model.HomeAnimals.Hamster;
 import Model.PackAnimal.Camel;
 import Model.PackAnimal.Donkey;
 import Model.PackAnimal.Horse;
-import Utilities.WriterToFile;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,9 +43,7 @@ public class AnimalController {
         return animalsDataBase.deleteAnimalFromDB(animal.getAnimalId());
     }
 
-    public static void writeAnimalIntoDb(Animal animal) {
-        WriterToFile.writeToFile(animal.toString(), "data/animalsDB.txt");
-    }
+
 
 
 

@@ -1,10 +1,10 @@
 package View;
 
 public enum AbilitiesMenu {
-    ADDABILITY("Добавить новую команду"),
-    EXITTOANIMALMENU("Выход в главное меню"),
-    SHOWABILITIES("Показать умения питомца");
 
+    EXITTOANIMALMENU("Выход в главное меню"),
+    SHOWABILITIES("Показать умения питомца"),
+    ADDABILITY("Добавить новую команду");
     private final String abilitiesMenuCommand;
 
     AbilitiesMenu(String abilitiesMenuCommand) {
