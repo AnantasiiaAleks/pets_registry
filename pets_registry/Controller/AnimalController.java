@@ -17,7 +17,7 @@ import java.util.List;
 
 public class AnimalController {
 
-    private DataBase animalsDataBase;
+    private final DataBase animalsDataBase;
 
     public AnimalController(DataBase animalsDataBase) {
         this.animalsDataBase = animalsDataBase;

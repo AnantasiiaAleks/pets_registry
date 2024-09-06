@@ -35,7 +35,7 @@ public class AnimalsDataBase implements DataBase{
 
     @Override
     public boolean deleteAnimalFromDB(int animalId) {
-        if (animalsDB.containsKey(animalId)) {
+        if (!animalsDB.containsKey(animalId)) {
             return false;
         }
         animalsDB.remove(animalId);

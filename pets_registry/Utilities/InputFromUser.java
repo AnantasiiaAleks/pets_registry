@@ -5,41 +5,48 @@ import Model.AnimalInfo;
 import Model.AnimalTitle;
 import Model.AnimalType;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static java.time.LocalDate.parse;
 
 public interface InputFromUser {
 
-    static AnimalInfo parseAnimalInfoFromUser(String text) {
-        String[] animalInfo = text.split(" ");
-        String infoName = null;
-        LocalDate infoBirthDate = null;
-        AnimalTitle infoTitle = null;
+    static AnimalInfo parseAnimalInfoFromUser(List<String> animalInfoList) {
+//        String[] animalInfo = text.split(" ");
+//        String infoName = null;
+//        LocalDate infoBirthDate = null;
+//        AnimalTitle infoTitle = null;
+        DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-        if (animalInfo.length != 3) {
+        if (animalInfoList.size() != 3) {
             throw new IllegalArgumentException("Вы ввели неверное количество данных");
         }
-        if (DataValidator.isTextValid(animalInfo[0])) {
-            infoName = animalInfo[0];
-        }
-        if (DataValidator.isDateValid(animalInfo[1])) {
-            infoBirthDate = LocalDate.parse(animalInfo[1]);
-        }
-        if (AnimalTitle.contains(animalInfo[2])) {
-            infoTitle = AnimalTitle.valueOf(animalInfo[2].toUpperCase());
-        }
-        AnimalType animalType = typeByTitle(animalInfo[2].toLowerCase());
+        String infoName = animalInfoList.get(0);
+        LocalDate infoBirthDate = LocalDate.parse(animalInfoList.get(1), myFormat);
+        AnimalTitle infoTitle = AnimalTitle.valueOf(animalInfoList.get(2).toUpperCase());
+//        if (DataValidator.isTextValid(animalInfo[0])) {
+//            infoName = animalInfo[0];
+//        }
+//        if (DataValidator.isDateValid(animalInfo[1])) {
+//            infoBirthDate = LocalDate.parse(animalInfo[1]);
+//        }
+//        if (AnimalTitle.contains(animalInfo[2])) {
+//            infoTitle = AnimalTitle.valueOf(animalInfo[2].toUpperCase());
+//        }
+        AnimalType animalType = typeByTitle(animalInfoList.get(2).toUpperCase());
         return new AnimalInfo(animalType, infoTitle, infoName, infoBirthDate);
     }
 
     private static AnimalType typeByTitle(String title){
-        if (title.equals("кошка") || title.equals("собака") || title.equals("хомяк")) {
+        if (title.equals("CAT") || title.equals("DOG") || title.equals("HAMSTER")) {
             return AnimalType.HOMEANIMAL;
         }
-        if (title.equals("лошадь") || title.equals("верблюд") || title.equals("осел")) {
+        if (title.equals("HORSE") || title.equals("CAMEL") || title.equals("DONKEY")) {
             return AnimalType.PACKANIMAL;
         }
         throw new IllegalArgumentException("Не найдено");

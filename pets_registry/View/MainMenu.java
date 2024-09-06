@@ -17,7 +17,7 @@ public enum MainMenu {
 
     public static String printMainMenu() {
         return String.format(
-                "%d.\t%s\n%d.\t%s\n%d\t%s\n%d\t%s",
+                "%d.\t%s\n%d.\t%s\n%d.\t%s\n%d.\t%s",
                 MainMenu.SHOWALLANIMALS.ordinal(), MainMenu.SHOWALLANIMALS.getMenuCommand(),
                 MainMenu.ADDANIMAL.ordinal(), MainMenu.ADDANIMAL.getMenuCommand(),
                 MainMenu.SEARCHANDDELETE.ordinal(), MainMenu.SEARCHANDDELETE.getMenuCommand(),

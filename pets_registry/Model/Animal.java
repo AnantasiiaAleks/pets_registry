@@ -59,7 +59,7 @@ public abstract class Animal {
 
     public String getBirthDateString() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        return dateTimeFormatter.format(birthDate);
+        return birthDate.format(dateTimeFormatter);
     }
 
     public int age (LocalDate birthDate) {
@@ -68,7 +68,7 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return String.format("d%.\t%s,\t%s.\tимя: s%,\tдата рождения: s%", getAnimalId(),
+        return String.format("%d.\t%s,\t%s.\tимя: %s,\tдата рождения: %s", getAnimalId(),
                 getAnimalType(), getAnimalTitle(), getName(),
                 getBirthDateString());
     }

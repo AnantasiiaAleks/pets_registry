@@ -17,7 +17,7 @@ public enum AnimalMenu {
 
     public static String printAnimalMenu() {
         return String.format(
-                "%d.\t%s\n%d.\t%s\n%d\t%s\n%d\t%s",
+                "%d.\t%s\n%d.\t%s\n%d.\t%s\n%d.\t%s",
                 AnimalMenu.SHOWANINALINFO.ordinal(), AnimalMenu.SHOWANINALINFO.getAnimalMenuCommand(),
                 AnimalMenu.ABILITIES.ordinal(), AnimalMenu.ABILITIES.getAnimalMenuCommand(),
                 AnimalMenu.DELETEANIMAL.ordinal(), AnimalMenu.DELETEANIMAL.getAnimalMenuCommand(),

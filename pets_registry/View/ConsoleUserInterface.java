@@ -4,13 +4,11 @@ import Controller.AnimalController;
 import Model.Ability;
 import Model.Animal;
 import Model.AnimalInfo;
-import Model.AnimalTitle;
 import Utilities.Counter;
 import Utilities.InputFromUser;
 
 import java.time.DateTimeException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,17 +51,40 @@ public class ConsoleUserInterface implements UserInterface{
         }
     }
 
+//    @Override
+//    public boolean showAddAnimal() throws Exception {
+//        System.out.println("\f");
+//        System.out.println("Внесите информацию о животном:\n" +
+//                "имя дата_рождения(дд.мм.гггг) вид\n" +
+//                "виды животных, доступные для внесения: " + Arrays.asList(AnimalTitle.values()));
+//        while(true) {
+//            Counter counter = new Counter();
+//            try (counter){
+//                String inputData = InputFromUser.inputText("Ввод: ");
+//                AnimalInfo animalInfo = InputFromUser.parseAnimalInfoFromUser(inputData);
+//                counter.add();
+//                return animalController.createNewAnimal(animalInfo.animalType(), animalInfo.animalTitle(), animalInfo.name(), animalInfo.birthDate());
+//            }
+//            catch (IllegalArgumentException e) {
+//                System.out.println("Неверный ввод");
+//            }
+//            catch (DateTimeException e) {
+//                System.out.println("Неверная дата");
+//            }
+//        }
+//    }
     @Override
     public boolean showAddAnimal() throws Exception {
         System.out.println("\f");
-        System.out.println("Внесите информацию о животном:\n" +
-                "имя дата_рождения(дд.мм.гггг) вид\n" +
-                "виды животных, доступные для внесения: " + Arrays.asList(AnimalTitle.values()));
-        while(true) {
+        System.out.println("Внесите информацию о животном");
+        List<String> animalInfoList = new ArrayList<>();
+        while (true) {
             Counter counter = new Counter();
             try (counter){
-                String inputData = InputFromUser.inputText("Ввод: ");
-                AnimalInfo animalInfo = InputFromUser.parseAnimalInfoFromUser(inputData);
+                animalInfoList.add(0, InputFromUser.inputText("Введите имя: "));
+                animalInfoList.add(1, InputFromUser.inputText("Введите дату рождения в формате дд.ММ.гггг: "));
+                animalInfoList.add(2, InputFromUser.inputText("Введите вид животного: "));
+                AnimalInfo animalInfo = InputFromUser.parseAnimalInfoFromUser(animalInfoList);
                 counter.add();
                 return animalController.createNewAnimal(animalInfo.animalType(), animalInfo.animalTitle(), animalInfo.name(), animalInfo.birthDate());
             }
@@ -86,8 +107,7 @@ public class ConsoleUserInterface implements UserInterface{
             try {
                 System.out.println("Выберите пункт меню: ");
                 Scanner sc = new Scanner(System.in);
-                AnimalMenu secondCommand = AnimalMenu.values()[sc.nextInt()];
-                return secondCommand;
+                return AnimalMenu.values()[sc.nextInt()];
             }
             catch (IndexOutOfBoundsException e) {
                 System.out.println("Некорректный ввод.");
@@ -121,8 +141,7 @@ public class ConsoleUserInterface implements UserInterface{
             try {
                 System.out.println("Выберите пункт меню: ");
                 Scanner sc = new Scanner(System.in);
-                AbilitiesMenu thirdCommand = AbilitiesMenu.values()[sc.nextInt()];
-                return thirdCommand;
+                return AbilitiesMenu.values()[sc.nextInt()];
             }
             catch (IndexOutOfBoundsException e) {
                 System.out.println("Некорректный ввод.");
@@ -139,17 +158,16 @@ public class ConsoleUserInterface implements UserInterface{
     }
 
     @Override
-    public boolean showAddNewAbility() {
+    public void showAddNewAbility() {
         System.out.println("\f");
         System.out.println("Регистр животных, версия 1.0\n");
         Animal animal = searchAnimal();
         String newAbility = InputFromUser.inputText("Введите название нового умения: ");
         if (newAbility.length() <= 1) {
             System.out.println("Некорректное название умения");
-            return false;
+            return;
         }
         animal.learnAbility(new Ability(newAbility));
-        return true;
     }
 
     private Animal searchAnimal() {

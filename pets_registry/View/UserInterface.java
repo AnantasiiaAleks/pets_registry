@@ -10,7 +10,7 @@ public interface UserInterface {
     void showAnimal();
     boolean showDeleteAnimal();
     void showAnimalAbilities();
-    boolean showAddNewAbility();
+    void showAddNewAbility();
 
 
 }
